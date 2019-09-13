@@ -32,7 +32,7 @@
 			<string>IOResources</string>
 			<key>IOResourceMatch</key>
 			<string>IOKit</string>
-			<key>IOUserClient</key>
+			<key>IOUserClientClass</key>
 			<string>FSGuardUserClient</string>
 		</dict>
 	</dict>

@@ -148,6 +148,17 @@ void FSGuardService::handleClose(IOService *forClient, IOOptionBits options)
     super::handleClose(forClient, options);
 }
 
+void FSGuardService::free()
+{
+    if (m_kauthCallsLock)
+    {
+        IORWLockFree(m_kauthCallsLock);
+        m_kauthCallsLock = nullptr;
+    }
+
+    super::free();
+}
+
 int FSGuardService::processVnodeScope(kauth_action_t action, vfs_context_t context, vnode_t vp)
 {
     //

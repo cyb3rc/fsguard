@@ -3,7 +3,7 @@
 //  FileSystemGuard
 //
 //  Created by Oleg Kulchytskyi on 9/13/19.
-//  Copyright © 2019 c0de1n. All rights reserved.
+//  Copyright © 2019 Oleg Kulchytskyi. All rights reserved.
 //
 
 #include "FSGuardUserClient.h"
@@ -112,7 +112,7 @@ IOReturn FSGuardUserClient::externalMethod(uint32_t selector,
         {
             OSMemberFunctionCast(IOExternalMethodAction, this, &FSGuardUserClient::extPostFSGuardResponse),
             0,
-            sizeof(FSGuardUserClient),
+            sizeof(FSGuardResponse),
             0,
             0
         }
