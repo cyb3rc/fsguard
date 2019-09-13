@@ -10,7 +10,12 @@
 		9E02926F2323D22200F47EEF /* FSGuardService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E02926E2323D22200F47EEF /* FSGuardService.h */; };
 		9E0292712323D22200F47EEF /* FSGuardService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0292702323D22200F47EEF /* FSGuardService.cpp */; };
 		9EA85C2E232BECBC007DDDB5 /* FSGuardLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */; };
-		9EA85C30232BECBC007DDDB5 /* FSGuardLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C2F232BECBC007DDDB5 /* FSGuardLib.m */; };
+		9EA85C30232BECBC007DDDB5 /* FSGuardLib.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C2F232BECBC007DDDB5 /* FSGuardLib.mm */; };
+		9EA85C3A232BF064007DDDB5 /* FSGuardUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C38232BF064007DDDB5 /* FSGuardUserClient.cpp */; };
+		9EA85C3B232BF064007DDDB5 /* FSGuardUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C39232BF064007DDDB5 /* FSGuardUserClient.h */; };
+		9EA85C40232BF60E007DDDB5 /* WaitList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C3E232BF60E007DDDB5 /* WaitList.cpp */; };
+		9EA85C41232BF60E007DDDB5 /* WaitList.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C3F232BF60E007DDDB5 /* WaitList.h */; };
+		9EA85C43232BF68A007DDDB5 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C42232BF68A007DDDB5 /* Utils.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +35,14 @@
 		9E0292722323D22200F47EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EA85C2B232BECBC007DDDB5 /* libFileSystemGuardLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFileSystemGuardLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardLib.h; sourceTree = "<group>"; };
-		9EA85C2F232BECBC007DDDB5 /* FSGuardLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSGuardLib.m; sourceTree = "<group>"; };
+		9EA85C2F232BECBC007DDDB5 /* FSGuardLib.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FSGuardLib.mm; sourceTree = "<group>"; };
+		9EA85C38232BF064007DDDB5 /* FSGuardUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSGuardUserClient.cpp; sourceTree = "<group>"; };
+		9EA85C39232BF064007DDDB5 /* FSGuardUserClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardUserClient.h; sourceTree = "<group>"; };
+		9EA85C3C232BF12E007DDDB5 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		9EA85C3D232BF307007DDDB5 /* FSGuardUserClientInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardUserClientInterface.h; sourceTree = "<group>"; };
+		9EA85C3E232BF60E007DDDB5 /* WaitList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WaitList.cpp; sourceTree = "<group>"; };
+		9EA85C3F232BF60E007DDDB5 /* WaitList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitList.h; sourceTree = "<group>"; };
+		9EA85C42232BF68A007DDDB5 /* Utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +84,16 @@
 		9E02926D2323D22200F47EEF /* FileSystemGuard */ = {
 			isa = PBXGroup;
 			children = (
+				9E0292722323D22200F47EEF /* Info.plist */,
+				9EA85C3D232BF307007DDDB5 /* FSGuardUserClientInterface.h */,
 				9E02926E2323D22200F47EEF /* FSGuardService.h */,
 				9E0292702323D22200F47EEF /* FSGuardService.cpp */,
-				9E0292722323D22200F47EEF /* Info.plist */,
+				9EA85C39232BF064007DDDB5 /* FSGuardUserClient.h */,
+				9EA85C38232BF064007DDDB5 /* FSGuardUserClient.cpp */,
+				9EA85C3C232BF12E007DDDB5 /* Utils.h */,
+				9EA85C42232BF68A007DDDB5 /* Utils.cpp */,
+				9EA85C3F232BF60E007DDDB5 /* WaitList.h */,
+				9EA85C3E232BF60E007DDDB5 /* WaitList.cpp */,
 			);
 			path = FileSystemGuard;
 			sourceTree = "<group>";
@@ -83,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */,
-				9EA85C2F232BECBC007DDDB5 /* FSGuardLib.m */,
+				9EA85C2F232BECBC007DDDB5 /* FSGuardLib.mm */,
 			);
 			path = FileSystemGuardLib;
 			sourceTree = "<group>";
@@ -96,6 +115,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E02926F2323D22200F47EEF /* FSGuardService.h in Headers */,
+				9EA85C41232BF60E007DDDB5 /* WaitList.h in Headers */,
+				9EA85C3B232BF064007DDDB5 /* FSGuardUserClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EA85C40232BF60E007DDDB5 /* WaitList.cpp in Sources */,
+				9EA85C3A232BF064007DDDB5 /* FSGuardUserClient.cpp in Sources */,
 				9E0292712323D22200F47EEF /* FSGuardService.cpp in Sources */,
+				9EA85C43232BF68A007DDDB5 /* Utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EA85C30232BECBC007DDDB5 /* FSGuardLib.m in Sources */,
+				9EA85C30232BECBC007DDDB5 /* FSGuardLib.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +357,8 @@
 		9E0292762323D22200F47EEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
@@ -349,6 +375,8 @@
 		9E0292772323D22200F47EEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
@@ -365,6 +393,7 @@
 		9EA85C32232BECBC007DDDB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 367F9R5TD4;
 				EXECUTABLE_PREFIX = lib;
@@ -376,6 +405,7 @@
 		9EA85C33232BECBC007DDDB5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 367F9R5TD4;
 				EXECUTABLE_PREFIX = lib;
