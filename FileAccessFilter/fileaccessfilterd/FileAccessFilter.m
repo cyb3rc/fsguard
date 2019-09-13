@@ -16,8 +16,16 @@
 
 @implementation FileAccessFilter
 
-- (void)loadKEXT:(NSURL *const)kext completion:(void (^)(const NSInteger))handler
+- (void)loadKEXT:(NSURL *const)kext identifier:(NSString *const)bundleIdentifier completion:(void (^)(const NSInteger))handler
 {
+    NSArray<NSString *> *const infoKeys = @[(__bridge NSString *)kCFBundleVersionKey];
+    NSDictionary *const loadedKEXTInfo = (NSDictionary *)CFBridgingRelease(KextManagerCopyLoadedKextInfo((__bridge CFArrayRef)(@[bundleIdentifier]), (__bridge CFArrayRef)(infoKeys)));
+    if (loadedKEXTInfo[loadedKEXTInfo])
+    {
+        handler(0);
+        return;
+    }
+    
     const OSReturn result = KextManagerLoadKextWithURL((__bridge CFURLRef)kext, (__bridge CFArrayRef)(@[]));
     handler(result);
 }

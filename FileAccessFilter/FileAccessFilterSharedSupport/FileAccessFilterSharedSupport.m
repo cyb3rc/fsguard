@@ -23,7 +23,7 @@ NSXPCInterface * FAFCreateXPCFileAccessFilterInterface(void)
             argumentIndex:0
                   ofReply:NO];
     
-    NSXPCInterface *const interface = [NSXPCInterface interfaceWithProtocol:@protocol(FAFFileAccessFilter)];
+    NSXPCInterface *const interface = [NSXPCInterface interfaceWithProtocol:@protocol(FAFPrivilegedHelper)];
     [interface setInterface:delegateInterface
                 forSelector:@selector(registerResolutionDelegate:completion:)
               argumentIndex:0

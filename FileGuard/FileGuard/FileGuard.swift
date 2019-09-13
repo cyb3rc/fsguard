@@ -14,22 +14,23 @@ class AccessRule: NSObject {
     var policy: FAFResolutionType = .readwrite
 }
 
-protocol IFileGuardStateObserver {
+protocol IFileGuardStateObserver: class {
     func fileGuardDidStart()
     func fileGuardDidStop()
-    func fileGuardDidHandleError(_ errorText: String)
+    func fileGuardDidHandleCriticalError(_ errorText: String)
 }
 
 class FileGuard {
     private let ruleQueue = DispatchQueue(label: "", attributes: .concurrent,target: DispatchQueue.global())
     private var rules: [AccessRule] = []
-    private var connection: NSXPCConnection?
     
-    private let observer: IFileGuardStateObserver
+    private let fileAccessFilter: FAFFileAccessFilter
     
     
-    init(observer: IFileGuardStateObserver) {
-        self.observer = observer
+    weak var observer: IFileGuardStateObserver?
+    
+    init(fileAccessFilter: FAFFileAccessFilter) {
+        self.fileAccessFilter = fileAccessFilter
     }
     
     func addRule(_ rule: AccessRule) {
@@ -41,41 +42,21 @@ class FileGuard {
     }
     
     func start() {
-        let newConnection = NSXPCConnection.helperConnection()
-        
-        newConnection.invalidationHandler = { [weak self] in
-            self?.observer.fileGuardDidHandleError("Service has been invalidated.")
-        }
-        
-        newConnection.resume()
-        
-        let proxy = newConnection.remoteObjectProxyWithErrorHandler { [weak self] (error) in
-            self?.observer.fileGuardDidHandleError((error as NSError).localizedDescription)
-            } as! FAFFileAccessFilter
-        
-        proxy.register(self) { (success) in
+        fileAccessFilter.register(self) { (success) in
             if success {
-                self.observer.fileGuardDidStart()
+                self.observer?.fileGuardDidStart()
             } else {
-                self.observer.fileGuardDidHandleError("Failed to start monitoring.")
+                self.observer?.fileGuardDidHandleCriticalError("Failed to start monitoring.")
             }
         }
-        
-        self.connection = newConnection
     }
     
     func stop() {
-        guard let connection = connection else { return }
-        
-        let proxy = connection.remoteObjectProxyWithErrorHandler { [weak self] (error) in
-            self?.observer.fileGuardDidHandleError((error as NSError).localizedDescription)
-            } as! FAFFileAccessFilter
-        
-        proxy.register(nil) { (success) in
+        fileAccessFilter.register(nil) { (success) in
             if success {
-                self.observer.fileGuardDidStop()
+                self.observer?.fileGuardDidStart()
             } else {
-                self.observer.fileGuardDidHandleError("Failed to stop monitoring.")
+                self.observer?.fileGuardDidHandleCriticalError("Failed to stop monitoring.")
             }
         }
     }
@@ -96,11 +77,4 @@ extension FileGuard: FAFResolutionDelegate {
 }
 
 
-fileprivate extension NSXPCConnection {
-    static func helperConnection() -> NSXPCConnection {
-        let connection = NSXPCConnection(machServiceName: FAFFileAccessServiceMachName, options: .privileged)
-        connection.remoteObjectInterface = FAFCreateXPCFileAccessFilterInterface()
-        
-        return connection
-    }
-}
+
