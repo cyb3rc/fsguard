@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C41B70F232B8AA8009B0C9F /* libFileAccessFilterSharedSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C41B70E232B8AA8009B0C9F /* libFileAccessFilterSharedSupport.a */; };
+		3C41B71A232B8D3B009B0C9F /* com.alkenso.fileaccessfilterd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C41B718232B8D33009B0C9F /* com.alkenso.fileaccessfilterd */; };
+		3C52A0F2232BC559004B84ED /* FileGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C52A0F1232BC559004B84ED /* FileGuard.swift */; };
+		3C5A0363230D4FEA00F59389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A0362230D4FEA00F59389 /* AppDelegate.swift */; };
+		3C5A0365230D4FEC00F59389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C5A0364230D4FEC00F59389 /* Assets.xcassets */; };
+		3C5A0368230D4FEC00F59389 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C5A0366230D4FEC00F59389 /* MainMenu.xib */; };
+		3C5A0371230D549800F59389 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A0370230D549800F59389 /* MainWindowController.swift */; };
+		4931506B2315B55600649606 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4931506A2315B55600649606 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C41B714232B8B77009B0C9F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				3C41B71A232B8D3B009B0C9F /* com.alkenso.fileaccessfilterd in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3C41B70E232B8AA8009B0C9F /* libFileAccessFilterSharedSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFileAccessFilterSharedSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C41B710232B8AE8009B0C9F /* FileGuard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FileGuard-Bridging-Header.h"; sourceTree = "<group>"; };
+		3C41B718232B8D33009B0C9F /* com.alkenso.fileaccessfilterd */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.alkenso.fileaccessfilterd; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C52A0F1232BC559004B84ED /* FileGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileGuard.swift; sourceTree = "<group>"; };
+		3C5A035F230D4FEA00F59389 /* FileGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C5A0362230D4FEA00F59389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3C5A0364230D4FEC00F59389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C5A0367230D4FEC00F59389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3C5A0369230D4FEC00F59389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C5A036A230D4FEC00F59389 /* FileGuard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FileGuard.entitlements; sourceTree = "<group>"; };
+		3C5A0370230D549800F59389 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		4931506A2315B55600649606 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C5A035C230D4FEA00F59389 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C41B70F232B8AA8009B0C9F /* libFileAccessFilterSharedSupport.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C41B70D232B8AA8009B0C9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C41B70E232B8AA8009B0C9F /* libFileAccessFilterSharedSupport.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C5A0356230D4FEA00F59389 = {
+			isa = PBXGroup;
+			children = (
+				3C41B718232B8D33009B0C9F /* com.alkenso.fileaccessfilterd */,
+				3C5A0361230D4FEA00F59389 /* FileGuard */,
+				3C5A0360230D4FEA00F59389 /* Products */,
+				3C41B70D232B8AA8009B0C9F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3C5A0360230D4FEA00F59389 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C5A035F230D4FEA00F59389 /* FileGuard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C5A0361230D4FEA00F59389 /* FileGuard */ = {
+			isa = PBXGroup;
+			children = (
+				3C5A0362230D4FEA00F59389 /* AppDelegate.swift */,
+				3C5A0370230D549800F59389 /* MainWindowController.swift */,
+				3C52A0F1232BC559004B84ED /* FileGuard.swift */,
+				3C5A0364230D4FEC00F59389 /* Assets.xcassets */,
+				3C5A0366230D4FEC00F59389 /* MainMenu.xib */,
+				4931506A2315B55600649606 /* MainWindow.xib */,
+				3C5A0369230D4FEC00F59389 /* Info.plist */,
+				3C5A036A230D4FEC00F59389 /* FileGuard.entitlements */,
+				3C41B710232B8AE8009B0C9F /* FileGuard-Bridging-Header.h */,
+			);
+			path = FileGuard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3C5A035E230D4FEA00F59389 /* FileGuard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C5A036D230D4FEC00F59389 /* Build configuration list for PBXNativeTarget "FileGuard" */;
+			buildPhases = (
+				3C5A035B230D4FEA00F59389 /* Sources */,
+				3C5A035C230D4FEA00F59389 /* Frameworks */,
+				3C5A035D230D4FEA00F59389 /* Resources */,
+				3C41B714232B8B77009B0C9F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FileGuard;
+			productName = FileGuard;
+			productReference = 3C5A035F230D4FEA00F59389 /* FileGuard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C5A0357230D4FEA00F59389 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Volodymyr Vashurkin";
+				TargetAttributes = {
+					3C5A035E230D4FEA00F59389 = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 3C5A035A230D4FEA00F59389 /* Build configuration list for PBXProject "FileGuard" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3C5A0356230D4FEA00F59389;
+			productRefGroup = 3C5A0360230D4FEA00F59389 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C5A035E230D4FEA00F59389 /* FileGuard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C5A035D230D4FEA00F59389 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C5A0365230D4FEC00F59389 /* Assets.xcassets in Resources */,
+				3C5A0368230D4FEC00F59389 /* MainMenu.xib in Resources */,
+				4931506B2315B55600649606 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C5A035B230D4FEA00F59389 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C52A0F2232BC559004B84ED /* FileGuard.swift in Sources */,
+				3C5A0371230D549800F59389 /* MainWindowController.swift in Sources */,
+				3C5A0363230D4FEA00F59389 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3C5A0366230D4FEC00F59389 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C5A0367230D4FEC00F59389 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3C5A036B230D4FEC00F59389 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5ZVUD23J3X;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3C5A036C230D4FEC00F59389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5ZVUD23J3X;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		3C5A036E230D4FEC00F59389 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)/usr/local/include";
+				INFOPLIST_FILE = FileGuard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alkenso.FileGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FileGuard/FileGuard-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3C5A036F230D4FEC00F59389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)/usr/local/include";
+				INFOPLIST_FILE = FileGuard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alkenso.FileGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FileGuard/FileGuard-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C5A035A230D4FEA00F59389 /* Build configuration list for PBXProject "FileGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C5A036B230D4FEC00F59389 /* Debug */,
+				3C5A036C230D4FEC00F59389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C5A036D230D4FEC00F59389 /* Build configuration list for PBXNativeTarget "FileGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C5A036E230D4FEC00F59389 /* Debug */,
+				3C5A036F230D4FEC00F59389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C5A0357230D4FEA00F59389 /* Project object */;
+}
