@@ -9,18 +9,28 @@
 /* Begin PBXBuildFile section */
 		9E02926F2323D22200F47EEF /* FSGuardService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E02926E2323D22200F47EEF /* FSGuardService.h */; };
 		9E0292712323D22200F47EEF /* FSGuardService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0292702323D22200F47EEF /* FSGuardService.cpp */; };
-		9EA85C21232BE3AA007DDDB5 /* FSGuardUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C20232BE3AA007DDDB5 /* FSGuardUser.h */; };
-		9EA85C23232BE3AA007DDDB5 /* FSGuardUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C22232BE3AA007DDDB5 /* FSGuardUser.m */; };
+		9EA85C2E232BECBC007DDDB5 /* FSGuardLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */; };
+		9EA85C30232BECBC007DDDB5 /* FSGuardLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C2F232BECBC007DDDB5 /* FSGuardLib.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9EA85C34232BED0F007DDDB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E0292622323D22200F47EEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E02926A2323D22200F47EEF;
+			remoteInfo = FileSystemGuard;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9E02926B2323D22200F47EEF /* FileSystemGuard.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileSystemGuard.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E02926E2323D22200F47EEF /* FSGuardService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardService.h; sourceTree = "<group>"; };
 		9E0292702323D22200F47EEF /* FSGuardService.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSGuardService.cpp; sourceTree = "<group>"; };
 		9E0292722323D22200F47EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EA85C1E232BE3AA007DDDB5 /* libFileSystemGuardUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFileSystemGuardUser.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EA85C20232BE3AA007DDDB5 /* FSGuardUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardUser.h; sourceTree = "<group>"; };
-		9EA85C22232BE3AA007DDDB5 /* FSGuardUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSGuardUser.m; sourceTree = "<group>"; };
+		9EA85C2B232BECBC007DDDB5 /* libFileSystemGuardLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFileSystemGuardLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardLib.h; sourceTree = "<group>"; };
+		9EA85C2F232BECBC007DDDB5 /* FSGuardLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSGuardLib.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +41,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EA85C1C232BE3AA007DDDB5 /* Frameworks */ = {
+		9EA85C29232BECBC007DDDB5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				9E02926D2323D22200F47EEF /* FileSystemGuard */,
-				9EA85C1F232BE3AA007DDDB5 /* FileSystemGuardUser */,
+				9EA85C2C232BECBC007DDDB5 /* FileSystemGuardLib */,
 				9E02926C2323D22200F47EEF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				9E02926B2323D22200F47EEF /* FileSystemGuard.kext */,
-				9EA85C1E232BE3AA007DDDB5 /* libFileSystemGuardUser.a */,
+				9EA85C2B232BECBC007DDDB5 /* libFileSystemGuardLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,13 +79,13 @@
 			path = FileSystemGuard;
 			sourceTree = "<group>";
 		};
-		9EA85C1F232BE3AA007DDDB5 /* FileSystemGuardUser */ = {
+		9EA85C2C232BECBC007DDDB5 /* FileSystemGuardLib */ = {
 			isa = PBXGroup;
 			children = (
-				9EA85C20232BE3AA007DDDB5 /* FSGuardUser.h */,
-				9EA85C22232BE3AA007DDDB5 /* FSGuardUser.m */,
+				9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */,
+				9EA85C2F232BECBC007DDDB5 /* FSGuardLib.m */,
 			);
-			path = FileSystemGuardUser;
+			path = FileSystemGuardLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,11 +99,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EA85C1A232BE3AA007DDDB5 /* Headers */ = {
+		9EA85C27232BECBC007DDDB5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EA85C21232BE3AA007DDDB5 /* FSGuardUser.h in Headers */,
+				9EA85C2E232BECBC007DDDB5 /* FSGuardLib.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,21 +128,22 @@
 			productReference = 9E02926B2323D22200F47EEF /* FileSystemGuard.kext */;
 			productType = "com.apple.product-type.kernel-extension";
 		};
-		9EA85C1D232BE3AA007DDDB5 /* FileSystemGuardUser */ = {
+		9EA85C2A232BECBC007DDDB5 /* FileSystemGuardLib */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9EA85C26232BE3AA007DDDB5 /* Build configuration list for PBXNativeTarget "FileSystemGuardUser" */;
+			buildConfigurationList = 9EA85C31232BECBC007DDDB5 /* Build configuration list for PBXNativeTarget "FileSystemGuardLib" */;
 			buildPhases = (
-				9EA85C1A232BE3AA007DDDB5 /* Headers */,
-				9EA85C1B232BE3AA007DDDB5 /* Sources */,
-				9EA85C1C232BE3AA007DDDB5 /* Frameworks */,
+				9EA85C27232BECBC007DDDB5 /* Headers */,
+				9EA85C28232BECBC007DDDB5 /* Sources */,
+				9EA85C29232BECBC007DDDB5 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9EA85C35232BED0F007DDDB5 /* PBXTargetDependency */,
 			);
-			name = FileSystemGuardUser;
-			productName = FileSystemGuardUser;
-			productReference = 9EA85C1E232BE3AA007DDDB5 /* libFileSystemGuardUser.a */;
+			name = FileSystemGuardLib;
+			productName = FileSystemGuardLib;
+			productReference = 9EA85C2B232BECBC007DDDB5 /* libFileSystemGuardLib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -147,7 +158,7 @@
 					9E02926A2323D22200F47EEF = {
 						CreatedOnToolsVersion = 10.3;
 					};
-					9EA85C1D232BE3AA007DDDB5 = {
+					9EA85C2A232BECBC007DDDB5 = {
 						CreatedOnToolsVersion = 10.3;
 					};
 				};
@@ -165,7 +176,7 @@
 			projectRoot = "";
 			targets = (
 				9E02926A2323D22200F47EEF /* FileSystemGuard */,
-				9EA85C1D232BE3AA007DDDB5 /* FileSystemGuardUser */,
+				9EA85C2A232BECBC007DDDB5 /* FileSystemGuardLib */,
 			);
 		};
 /* End PBXProject section */
@@ -189,15 +200,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EA85C1B232BE3AA007DDDB5 /* Sources */ = {
+		9EA85C28232BECBC007DDDB5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EA85C23232BE3AA007DDDB5 /* FSGuardUser.m in Sources */,
+				9EA85C30232BECBC007DDDB5 /* FSGuardLib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9EA85C35232BED0F007DDDB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E02926A2323D22200F47EEF /* FileSystemGuard */;
+			targetProxy = 9EA85C34232BED0F007DDDB5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9E0292732323D22200F47EEF /* Debug */ = {
@@ -343,7 +362,7 @@
 			};
 			name = Release;
 		};
-		9EA85C24232BE3AA007DDDB5 /* Debug */ = {
+		9EA85C32232BECBC007DDDB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -354,7 +373,7 @@
 			};
 			name = Debug;
 		};
-		9EA85C25232BE3AA007DDDB5 /* Release */ = {
+		9EA85C33232BECBC007DDDB5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -386,11 +405,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9EA85C26232BE3AA007DDDB5 /* Build configuration list for PBXNativeTarget "FileSystemGuardUser" */ = {
+		9EA85C31232BECBC007DDDB5 /* Build configuration list for PBXNativeTarget "FileSystemGuardLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9EA85C24232BE3AA007DDDB5 /* Debug */,
-				9EA85C25232BE3AA007DDDB5 /* Release */,
+				9EA85C32232BECBC007DDDB5 /* Debug */,
+				9EA85C33232BECBC007DDDB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
