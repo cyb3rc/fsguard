@@ -22,7 +22,8 @@ class MainWindowController: NSWindowController {
     @IBOutlet private var segmentButtons: NSSegmentedControl!
     @IBOutlet private var checkboxEnable: NSButton!
     
-    lazy private var fileGuard = FileGuard(observer: self)
+    private var connectionClient = XPCPrivilegedHelperClient()
+    private var fileGuard: FileGuard?
     
     
     static func createDefault() -> MainWindowController {
@@ -33,33 +34,41 @@ class MainWindowController: NSWindowController {
 extension MainWindowController {
     @IBAction private func enableFileGuardClicked(_ sender: NSButton) {
         checkboxEnable.isEnabled = false
-        let isEnabling = checkboxEnable.state == .on
         
-        guard isEnabling else {
-            fileGuard.stop()
+        if let fileGuard = fileGuard {
+            let isEnabling = checkboxEnable.state == .on
+            if isEnabling {
+                fileGuard.start()
+            } else {
+                fileGuard.stop()
+            }
+            
             return
         }
         
         guard installHelper() else {
-            updateEnabledState(false)
+            disconnectWithError("Failed to install helper")
             return
         }
         
-        fileGuard.start()
+        connectionClient.start()
     }
     
     private func installHelper() -> Bool {
         guard let authorization = PrivilegedUtils.askAuthorization() else {
-            showError("Failed to authorize")
             return false
         }
         
         guard PrivilegedUtils.blessHelper(label: "com.alkenso.fileaccessfilterd", authorization: authorization) else {
-            showError("Failed to install helper")
             return false
         }
         
         return true
+    }
+    
+    private func disconnectWithError(_ text: String) {
+        showError(text)
+        updateEnabledState(false)
     }
     
     private func showError(_ text: String) {
@@ -69,20 +78,74 @@ extension MainWindowController {
     }
 }
 
+extension MainWindowController: XPCPrivilegedHelperClientObserver {
+    func privilegedHelperDidConnect(helper: FAFPrivilegedHelper) {
+        guard let kextLocation = Bundle.main.url(forResource: "FileSystemGuard", withExtension: "kext") else {
+            return
+        }
+        
+        helper.loadKEXT(kextLocation, identifier: "com.c0de1n.FileSystemGuard") { (error) in
+            if error != 0 {
+                self.disconnectWithError("Failed to load KEXT: \(error)")
+                return
+            }
+            
+            let fileGuard = FileGuard(fileAccessFilter: helper)
+            fileGuard.observer = self
+            self.setFileGuard(fileGuard)
+        }
+    }
+    
+    func privilegedHelperDidDisconnect() {
+        disconnectWithError("XPC connection has been lost.")
+    }
+    
+    private func setFileGuard(_ fileGuard: FileGuard?) {
+        DispatchQueue.main.async {
+            self.fileGuard = fileGuard
+        }
+    }
+}
+
+extension MainWindowController: IFileGuardStateObserver {
+    func fileGuardDidStart() {
+        updateEnabledState(true)
+    }
+    
+    func fileGuardDidStop() {
+        updateEnabledState(false)
+    }
+    
+    func fileGuardDidHandleCriticalError(_ errorText: String) {
+        disconnectWithError(errorText)
+    }
+    
+    private func updateEnabledState(_ enabled: Bool) {
+        DispatchQueue.main.async {
+            self.checkboxEnable.isEnabled = true
+            self.checkboxEnable.state = enabled ? .on : .off
+        }
+    }
+}
+
 extension MainWindowController: NSTableViewDelegate {
     override func windowDidLoad() {
+        connectionClient.observer = self
+        
         updateButtonsState()
         arrayController.objectClass = AccessRule.self
     }
     
     @IBAction private func segmentButtonClicked(_ sender: NSSegmentedControl) {
+        guard let fileGuard = fileGuard else { return }
+        
         switch SegmentButtonIndex(rawValue: sender.selectedSegment) {
         case .add?:
             selectPath { (url) in
                 let rule = self.arrayController.newObject() as! AccessRule
                 rule.path = url.path
                 self.arrayController.addObject(rule)
-                self.fileGuard.addRule(rule)
+                fileGuard.addRule(rule)
             }
         case .remove?:
             let rulesToRemove = arrayController.selectedObjects as! [AccessRule]
@@ -112,27 +175,6 @@ extension MainWindowController: NSTableViewDelegate {
     
     private func updateButtonsState() {
         segmentButtons.setEnabled(!arrayController.selectionIndexes.isEmpty, forSegment: SegmentButtonIndex.remove.rawValue)
-    }
-}
-
-extension MainWindowController: IFileGuardStateObserver {
-    func fileGuardDidStart() {
-        updateEnabledState(true)
-    }
-    
-    func fileGuardDidStop() {
-        updateEnabledState(false)
-    }
-    
-    func fileGuardDidHandleError(_ errorText: String) {
-        updateEnabledState(false)
-    }
-    
-    private func updateEnabledState(_ enabled: Bool) {
-        DispatchQueue.main.async {
-            self.checkboxEnable.isEnabled = true
-            self.checkboxEnable.state = enabled ? .on : .off
-        }
     }
 }
 

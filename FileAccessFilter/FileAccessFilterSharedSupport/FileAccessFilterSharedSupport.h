@@ -39,8 +39,15 @@ typedef void(^FAFResolutionHandler)(const FAFResolutionType resolution);
 
 
 @protocol FAFFileAccessFilter
-- (void)loadKEXT:(NSURL *const)kext completion:(void(^)(const NSInteger error))handler;
 - (void)registerResolutionDelegate:(id<FAFResolutionDelegate> const _Nullable)delegate completion:(void(^)(const BOOL success))handler;
+@end
+
+
+@protocol FAFKEXTLoader
+- (void)loadKEXT:(NSURL *const)kext identifier:(NSString *const)bundleIdentifier completion:(void (^)(const NSInteger))handler;
+@end
+
+@protocol FAFPrivilegedHelper <FAFFileAccessFilter, FAFKEXTLoader>
 @end
 
 

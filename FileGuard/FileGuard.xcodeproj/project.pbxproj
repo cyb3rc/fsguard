@@ -8,24 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		3C41B70F232B8AA8009B0C9F /* libFileAccessFilterSharedSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C41B70E232B8AA8009B0C9F /* libFileAccessFilterSharedSupport.a */; };
-		3C41B71A232B8D3B009B0C9F /* com.alkenso.fileaccessfilterd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C41B718232B8D33009B0C9F /* com.alkenso.fileaccessfilterd */; };
+		3C41B71A232B8D3B009B0C9F /* com.alkenso.fileaccessfilterd in Copy Privileged Helper */ = {isa = PBXBuildFile; fileRef = 3C41B718232B8D33009B0C9F /* com.alkenso.fileaccessfilterd */; };
 		3C52A0F2232BC559004B84ED /* FileGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C52A0F1232BC559004B84ED /* FileGuard.swift */; };
 		3C5A0363230D4FEA00F59389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A0362230D4FEA00F59389 /* AppDelegate.swift */; };
 		3C5A0365230D4FEC00F59389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C5A0364230D4FEC00F59389 /* Assets.xcassets */; };
 		3C5A0368230D4FEC00F59389 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C5A0366230D4FEC00F59389 /* MainMenu.xib */; };
 		3C5A0371230D549800F59389 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A0370230D549800F59389 /* MainWindowController.swift */; };
 		4931506B2315B55600649606 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4931506A2315B55600649606 /* MainWindow.xib */; };
+		49D9B98F232C26550002ED02 /* FileSystemGuard.kext in Copy KEXT */ = {isa = PBXBuildFile; fileRef = 49D9B98D232C264D0002ED02 /* FileSystemGuard.kext */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		49D9B991232C33560002ED02 /* XPCPrivilegedHelperClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9B990232C33560002ED02 /* XPCPrivilegedHelperClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3C41B714232B8B77009B0C9F /* CopyFiles */ = {
+		3C41B714232B8B77009B0C9F /* Copy Privileged Helper */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LaunchServices;
 			dstSubfolderSpec = 1;
 			files = (
-				3C41B71A232B8D3B009B0C9F /* com.alkenso.fileaccessfilterd in CopyFiles */,
+				3C41B71A232B8D3B009B0C9F /* com.alkenso.fileaccessfilterd in Copy Privileged Helper */,
 			);
+			name = "Copy Privileged Helper";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49D9B98C232C26280002ED02 /* Copy KEXT */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				49D9B98F232C26550002ED02 /* FileSystemGuard.kext in Copy KEXT */,
+			);
+			name = "Copy KEXT";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -43,6 +57,8 @@
 		3C5A036A230D4FEC00F59389 /* FileGuard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FileGuard.entitlements; sourceTree = "<group>"; };
 		3C5A0370230D549800F59389 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4931506A2315B55600649606 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		49D9B98D232C264D0002ED02 /* FileSystemGuard.kext */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.kernel-extension"; path = FileSystemGuard.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		49D9B990232C33560002ED02 /* XPCPrivilegedHelperClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCPrivilegedHelperClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +84,7 @@
 		3C5A0356230D4FEA00F59389 = {
 			isa = PBXGroup;
 			children = (
+				49D9B98D232C264D0002ED02 /* FileSystemGuard.kext */,
 				3C41B718232B8D33009B0C9F /* com.alkenso.fileaccessfilterd */,
 				3C5A0361230D4FEA00F59389 /* FileGuard */,
 				3C5A0360230D4FEA00F59389 /* Products */,
@@ -88,6 +105,7 @@
 			children = (
 				3C5A0362230D4FEA00F59389 /* AppDelegate.swift */,
 				3C5A0370230D549800F59389 /* MainWindowController.swift */,
+				49D9B990232C33560002ED02 /* XPCPrivilegedHelperClient.swift */,
 				3C52A0F1232BC559004B84ED /* FileGuard.swift */,
 				3C5A0364230D4FEC00F59389 /* Assets.xcassets */,
 				3C5A0366230D4FEC00F59389 /* MainMenu.xib */,
@@ -109,7 +127,8 @@
 				3C5A035B230D4FEA00F59389 /* Sources */,
 				3C5A035C230D4FEA00F59389 /* Frameworks */,
 				3C5A035D230D4FEA00F59389 /* Resources */,
-				3C41B714232B8B77009B0C9F /* CopyFiles */,
+				3C41B714232B8B77009B0C9F /* Copy Privileged Helper */,
+				49D9B98C232C26280002ED02 /* Copy KEXT */,
 			);
 			buildRules = (
 			);
@@ -180,6 +199,7 @@
 				3C52A0F2232BC559004B84ED /* FileGuard.swift in Sources */,
 				3C5A0371230D549800F59389 /* MainWindowController.swift in Sources */,
 				3C5A0363230D4FEA00F59389 /* AppDelegate.swift in Sources */,
+				49D9B991232C33560002ED02 /* XPCPrivilegedHelperClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

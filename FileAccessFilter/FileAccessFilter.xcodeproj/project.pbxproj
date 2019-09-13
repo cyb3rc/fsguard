@@ -374,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEVELOPMENT_TEAM = 5ZVUD23J3X;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)/usr/local/include";
 				INFOPLIST_FILE = "$(SRCROOT)/fileaccessfilterd/Info.plist";
 				OTHER_LDFLAGS = (
@@ -391,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEVELOPMENT_TEAM = 5ZVUD23J3X;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)/usr/local/include";
 				INFOPLIST_FILE = "$(SRCROOT)/fileaccessfilterd/Info.plist";
 				OTHER_LDFLAGS = (
