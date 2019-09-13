@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9E02926F2323D22200F47EEF /* FSGuardService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E02926E2323D22200F47EEF /* FSGuardService.h */; };
+		9E0292712323D22200F47EEF /* FSGuardService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0292702323D22200F47EEF /* FSGuardService.cpp */; };
+		9EA85C21232BE3AA007DDDB5 /* FSGuardUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C20232BE3AA007DDDB5 /* FSGuardUser.h */; };
+		9EA85C23232BE3AA007DDDB5 /* FSGuardUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C22232BE3AA007DDDB5 /* FSGuardUser.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9E02926B2323D22200F47EEF /* FileSystemGuard.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileSystemGuard.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E02926E2323D22200F47EEF /* FSGuardService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardService.h; sourceTree = "<group>"; };
+		9E0292702323D22200F47EEF /* FSGuardService.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FSGuardService.cpp; sourceTree = "<group>"; };
+		9E0292722323D22200F47EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EA85C1E232BE3AA007DDDB5 /* libFileSystemGuardUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFileSystemGuardUser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EA85C20232BE3AA007DDDB5 /* FSGuardUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSGuardUser.h; sourceTree = "<group>"; };
+		9EA85C22232BE3AA007DDDB5 /* FSGuardUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSGuardUser.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9E0292682323D22200F47EEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EA85C1C232BE3AA007DDDB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E0292612323D22200F47EEF = {
+			isa = PBXGroup;
+			children = (
+				9E02926D2323D22200F47EEF /* FileSystemGuard */,
+				9EA85C1F232BE3AA007DDDB5 /* FileSystemGuardUser */,
+				9E02926C2323D22200F47EEF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9E02926C2323D22200F47EEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E02926B2323D22200F47EEF /* FileSystemGuard.kext */,
+				9EA85C1E232BE3AA007DDDB5 /* libFileSystemGuardUser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E02926D2323D22200F47EEF /* FileSystemGuard */ = {
+			isa = PBXGroup;
+			children = (
+				9E02926E2323D22200F47EEF /* FSGuardService.h */,
+				9E0292702323D22200F47EEF /* FSGuardService.cpp */,
+				9E0292722323D22200F47EEF /* Info.plist */,
+			);
+			path = FileSystemGuard;
+			sourceTree = "<group>";
+		};
+		9EA85C1F232BE3AA007DDDB5 /* FileSystemGuardUser */ = {
+			isa = PBXGroup;
+			children = (
+				9EA85C20232BE3AA007DDDB5 /* FSGuardUser.h */,
+				9EA85C22232BE3AA007DDDB5 /* FSGuardUser.m */,
+			);
+			path = FileSystemGuardUser;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9E0292662323D22200F47EEF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E02926F2323D22200F47EEF /* FSGuardService.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EA85C1A232BE3AA007DDDB5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EA85C21232BE3AA007DDDB5 /* FSGuardUser.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9E02926A2323D22200F47EEF /* FileSystemGuard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E0292752323D22200F47EEF /* Build configuration list for PBXNativeTarget "FileSystemGuard" */;
+			buildPhases = (
+				9E0292662323D22200F47EEF /* Headers */,
+				9E0292672323D22200F47EEF /* Sources */,
+				9E0292682323D22200F47EEF /* Frameworks */,
+				9E0292692323D22200F47EEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FileSystemGuard;
+			productName = FileSystemGuard;
+			productReference = 9E02926B2323D22200F47EEF /* FileSystemGuard.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+		9EA85C1D232BE3AA007DDDB5 /* FileSystemGuardUser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EA85C26232BE3AA007DDDB5 /* Build configuration list for PBXNativeTarget "FileSystemGuardUser" */;
+			buildPhases = (
+				9EA85C1A232BE3AA007DDDB5 /* Headers */,
+				9EA85C1B232BE3AA007DDDB5 /* Sources */,
+				9EA85C1C232BE3AA007DDDB5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FileSystemGuardUser;
+			productName = FileSystemGuardUser;
+			productReference = 9EA85C1E232BE3AA007DDDB5 /* libFileSystemGuardUser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9E0292622323D22200F47EEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = c0de1n;
+				TargetAttributes = {
+					9E02926A2323D22200F47EEF = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					9EA85C1D232BE3AA007DDDB5 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 9E0292652323D22200F47EEF /* Build configuration list for PBXProject "FileSystemGuard" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9E0292612323D22200F47EEF;
+			productRefGroup = 9E02926C2323D22200F47EEF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9E02926A2323D22200F47EEF /* FileSystemGuard */,
+				9EA85C1D232BE3AA007DDDB5 /* FileSystemGuardUser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9E0292692323D22200F47EEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9E0292672323D22200F47EEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E0292712323D22200F47EEF /* FSGuardService.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EA85C1B232BE3AA007DDDB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EA85C23232BE3AA007DDDB5 /* FSGuardUser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9E0292732323D22200F47EEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9E0292742323D22200F47EEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9E0292762323D22200F47EEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				DEVELOPMENT_TEAM = 367F9R5TD4;
+				INFOPLIST_FILE = FileSystemGuard/Info.plist;
+				MODULE_NAME = com.c0de1n.FileSystemGuard;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.c0de1n.FileSystemGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		9E0292772323D22200F47EEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				DEVELOPMENT_TEAM = 367F9R5TD4;
+				INFOPLIST_FILE = FileSystemGuard/Info.plist;
+				MODULE_NAME = com.c0de1n.FileSystemGuard;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.c0de1n.FileSystemGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
+		9EA85C24232BE3AA007DDDB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 367F9R5TD4;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9EA85C25232BE3AA007DDDB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 367F9R5TD4;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9E0292652323D22200F47EEF /* Build configuration list for PBXProject "FileSystemGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0292732323D22200F47EEF /* Debug */,
+				9E0292742323D22200F47EEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E0292752323D22200F47EEF /* Build configuration list for PBXNativeTarget "FileSystemGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0292762323D22200F47EEF /* Debug */,
+				9E0292772323D22200F47EEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9EA85C26232BE3AA007DDDB5 /* Build configuration list for PBXNativeTarget "FileSystemGuardUser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EA85C24232BE3AA007DDDB5 /* Debug */,
+				9EA85C25232BE3AA007DDDB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9E0292622323D22200F47EEF /* Project object */;
+}
