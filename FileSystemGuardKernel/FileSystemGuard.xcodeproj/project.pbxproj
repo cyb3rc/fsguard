@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E02926F2323D22200F47EEF /* FSGuardService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E02926E2323D22200F47EEF /* FSGuardService.h */; };
 		9E0292712323D22200F47EEF /* FSGuardService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0292702323D22200F47EEF /* FSGuardService.cpp */; };
+		9E32F35F232C4B0A00EE5423 /* FSGuardUserClientInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C3D232BF307007DDDB5 /* FSGuardUserClientInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EA85C2E232BECBC007DDDB5 /* FSGuardLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EA85C30232BECBC007DDDB5 /* FSGuardLib.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C2F232BECBC007DDDB5 /* FSGuardLib.mm */; };
 		9EA85C3A232BF064007DDDB5 /* FSGuardUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C38232BF064007DDDB5 /* FSGuardUserClient.cpp */; };
@@ -16,7 +17,6 @@
 		9EA85C40232BF60E007DDDB5 /* WaitList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C3E232BF60E007DDDB5 /* WaitList.cpp */; };
 		9EA85C41232BF60E007DDDB5 /* WaitList.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C3F232BF60E007DDDB5 /* WaitList.h */; };
 		9EA85C43232BF68A007DDDB5 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C42232BF68A007DDDB5 /* Utils.cpp */; };
-		9EA85C47232C2BC6007DDDB5 /* FSGuardUserClientInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA85C3D232BF307007DDDB5 /* FSGuardUserClientInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EA85C4A232C2D54007DDDB5 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA85C49232C2D54007DDDB5 /* IOKit.framework */; };
 		9EA85C53232C36BC007DDDB5 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9EA85C52232C36BC007DDDB5 /* main.mm */; };
 		9EA85C59232C37D3007DDDB5 /* libFileSystemGuardLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA85C2B232BECBC007DDDB5 /* libFileSystemGuardLib.a */; };
@@ -125,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				9E0292722323D22200F47EEF /* Info.plist */,
-				9EA85C3D232BF307007DDDB5 /* FSGuardUserClientInterface.h */,
 				9E02926E2323D22200F47EEF /* FSGuardService.h */,
 				9E0292702323D22200F47EEF /* FSGuardService.cpp */,
 				9EA85C39232BF064007DDDB5 /* FSGuardUserClient.h */,
@@ -141,6 +140,7 @@
 		9EA85C2C232BECBC007DDDB5 /* FileSystemGuardLib */ = {
 			isa = PBXGroup;
 			children = (
+				9EA85C3D232BF307007DDDB5 /* FSGuardUserClientInterface.h */,
 				9EA85C2D232BECBC007DDDB5 /* FSGuardLib.h */,
 				9EA85C2F232BECBC007DDDB5 /* FSGuardLib.mm */,
 			);
@@ -170,10 +170,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EA85C47232C2BC6007DDDB5 /* FSGuardUserClientInterface.h in Headers */,
 				9E02926F2323D22200F47EEF /* FSGuardService.h in Headers */,
-				9EA85C41232BF60E007DDDB5 /* WaitList.h in Headers */,
 				9EA85C3B232BF064007DDDB5 /* FSGuardUserClient.h in Headers */,
+				9EA85C41232BF60E007DDDB5 /* WaitList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EA85C2E232BECBC007DDDB5 /* FSGuardLib.h in Headers */,
+				9E32F35F232C4B0A00EE5423 /* FSGuardUserClientInterface.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
