@@ -93,6 +93,8 @@ extension MainWindowController: XPCPrivilegedHelperClientObserver {
             let fileGuard = FileGuard(fileAccessFilter: helper)
             fileGuard.observer = self
             self.setFileGuard(fileGuard)
+            
+            fileGuard.start()
         }
     }
     

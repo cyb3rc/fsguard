@@ -8,10 +8,12 @@
 
 #import "FileAccessFilter.h"
 
+#import <FSGuardLib.h>
 #import <IOKit/kext/KextManager.h>
 
-@interface FileAccessFilter ()
+@interface FileAccessFilter () <FSGuardClientDelegate>
 @property (nullable, atomic, strong) id<FAFResolutionDelegate> delegate;
+@property (nullable, atomic, strong) FSGuardClient *fsGuard;
 @end
 
 @implementation FileAccessFilter
@@ -33,26 +35,42 @@
 - (void)registerResolutionDelegate:(id<FAFResolutionDelegate> const _Nullable)delegate completion:(void (^)(const BOOL))handler
 {
     self.delegate = delegate;
-    handler(YES);
+    if (delegate)
+    {
+        self.fsGuard = [[FSGuardClient alloc] init];
+        self.fsGuard.delegate = self;
+        
+        __weak typeof(self) weakSelf = self;
+        [NSThread detachNewThreadWithBlock:^{
+            [weakSelf.fsGuard start];
+        }];
+    }
+    else
+    {
+        [self.fsGuard stop];
+        self.fsGuard = nil;
+    }
     
-    [self dummyTask];
+    handler(YES);
 }
 
-- (void)dummyTask
+- (void)resolveRequest:(FSGuardRequest *)request withCompletion:(void (^)(BOOL))completion
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        FAFRequest *const request = [[FAFRequest alloc] init];
-        request.identifier = NSUUID.UUID;
-        request.file = [NSURL fileURLWithPath:[NSString stringWithFormat:@"/qwe/%d", arc4random()]];
-        request.pid = arc4random();
-        request.accessType = FAFAccessTypeWrite;
-        
-        [self.delegate resolveFileAccessRequest:request withResolutionHandler:^(const FAFResolutionType resolution) {
-            NSLog(@"FAF helper. File resolved: %@", request.file);
-        }];
-        
-        [self dummyTask];
-    });
+    id<FAFResolutionDelegate> const delegate = self.delegate;
+    if (!delegate)
+    {
+        completion(YES);
+        return;
+    }
+    
+    FAFRequest *const faRequest = [[FAFRequest alloc] init];
+    faRequest.file = [NSURL fileURLWithPath:@(request->filePath)];
+    faRequest.pid = request->pid;
+    faRequest.accessType = (FAFAccessType)request->action;
+    
+    [delegate resolveFileAccessRequest:faRequest withResolutionHandler:^(const FAFResolutionType resolution) {
+        completion(YES);
+    }];
 }
 
 @end

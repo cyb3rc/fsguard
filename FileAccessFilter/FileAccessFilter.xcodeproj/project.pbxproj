@@ -10,8 +10,9 @@
 		3C41B703232B8A54009B0C9F /* FileAccessFilterSharedSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C41B702232B8A54009B0C9F /* FileAccessFilterSharedSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C41B705232B8A54009B0C9F /* FileAccessFilterSharedSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C41B704232B8A54009B0C9F /* FileAccessFilterSharedSupport.m */; };
 		3C41B70A232B8A9C009B0C9F /* libFileAccessFilterSharedSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C41B700232B8A54009B0C9F /* libFileAccessFilterSharedSupport.a */; };
-		3C52A0F0232BBCDE004B84ED /* FileAccessFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C52A0EF232BBCDE004B84ED /* FileAccessFilter.m */; };
+		3C52A0F0232BBCDE004B84ED /* FileAccessFilter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C52A0EF232BBCDE004B84ED /* FileAccessFilter.mm */; };
 		3CAF537C2313FF4000C493A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF537B2313FF4000C493A2 /* main.m */; };
+		4917908D232C491700686567 /* libFileSystemGuardLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4917908C232C491700686567 /* libFileSystemGuardLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +44,10 @@
 		3C41B702232B8A54009B0C9F /* FileAccessFilterSharedSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileAccessFilterSharedSupport.h; sourceTree = "<group>"; };
 		3C41B704232B8A54009B0C9F /* FileAccessFilterSharedSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileAccessFilterSharedSupport.m; sourceTree = "<group>"; };
 		3C52A0EE232BBCDE004B84ED /* FileAccessFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileAccessFilter.h; sourceTree = "<group>"; };
-		3C52A0EF232BBCDE004B84ED /* FileAccessFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileAccessFilter.m; sourceTree = "<group>"; };
+		3C52A0EF232BBCDE004B84ED /* FileAccessFilter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FileAccessFilter.mm; sourceTree = "<group>"; };
 		3CAF53792313FF4000C493A2 /* com.alkenso.fileaccessfilterd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.alkenso.fileaccessfilterd; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAF537B2313FF4000C493A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4917908C232C491700686567 /* libFileSystemGuardLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFileSystemGuardLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4917908D232C491700686567 /* libFileSystemGuardLib.a in Frameworks */,
 				3C41B70A232B8A9C009B0C9F /* libFileAccessFilterSharedSupport.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +82,7 @@
 		3C41B709232B8A9C009B0C9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4917908C232C491700686567 /* libFileSystemGuardLib.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				3C52A0EE232BBCDE004B84ED /* FileAccessFilter.h */,
-				3C52A0EF232BBCDE004B84ED /* FileAccessFilter.m */,
+				3C52A0EF232BBCDE004B84ED /* FileAccessFilter.mm */,
 				3CAF537B2313FF4000C493A2 /* main.m */,
 				3C41B6FA232B87EC009B0C9F /* Info.plist */,
 				3C41B6FB232B87EC009B0C9F /* launchd.plist */,
@@ -212,7 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CAF537C2313FF4000C493A2 /* main.m in Sources */,
-				3C52A0F0232BBCDE004B84ED /* FileAccessFilter.m in Sources */,
+				3C52A0F0232BBCDE004B84ED /* FileAccessFilter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
