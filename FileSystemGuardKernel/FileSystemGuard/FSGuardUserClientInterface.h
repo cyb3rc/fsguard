@@ -16,6 +16,9 @@ constexpr const char *kFSGuardServiceClass = "FSGuardService";
 enum class FSGuardMethod
 {
     PostFSGuardResponse,
+    //
+    // NOTE: identifiers for additional external methods
+    //
 
     Count
 };
@@ -36,13 +39,12 @@ struct FSGuardRequest
     pid_t pid;
     FSGuardAction action;
     char filePath[PATH_MAX];
-
 };
 
 struct FSGuardResponse
 {
     void *rid;
-
+    bool allow;
 };
 
 #endif /* FSGuardUserClientInterface_h */

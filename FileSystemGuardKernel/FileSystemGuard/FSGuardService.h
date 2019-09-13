@@ -14,7 +14,15 @@
 #include <sys/kauth.h>
 #include <sys/vnode.h>
 
+#include "FSGuardUserClientInterface.h"
+
 class FSGuardUserClient;
+
+struct FSGuardRequestInternal
+{
+    FSGuardRequest request;
+    bool allow;
+};
 
 class FSGuardService : public IOService
 {
@@ -38,11 +46,7 @@ protected:
     virtual void free() override;
 
 private:
-    bool registerKauthListeners();
-    void unregisterKauthListeners();
-
     int processVnodeScope(kauth_action_t action, vfs_context_t context, vnode_t vp);
-    int processFileopScope(kauth_action_t action, uintptr_t arg0, uintptr_t arg1, uintptr_t arg2);
 
 private:
     static int vnodeScopeListener(kauth_cred_t credential,

@@ -13,9 +13,8 @@
 #include <IOKit/IOSharedDataQueue.h>
 
 #include "FSGuardUserClientInterface.h"
-
-class FSGuardService;
-class WaitList;
+#include "FSGuardService.h"
+#include "WaitList.h"
 
 class FSGuardUserClient : public IOUserClient
 {
@@ -46,17 +45,15 @@ public:
     //
     virtual IOReturn clientMemoryForType(UInt32 type, IOOptionBits *options, IOMemoryDescriptor **memory) override;
 
-    void sendFSGuardRequest(FSGuardRequest &request);
+    void sendFSGuardRequest(FSGuardRequestInternal &request);
 
 protected:
-    virtual void free() override;
-
-private:
     //
-    // External methods
+    // NOTE: external method
     //
-
     IOReturn extPostFSGuardResponse(void *reference, IOExternalMethodArguments *arguments);
+
+    virtual void free() override;
 
 private:
     FSGuardService     *m_provider;

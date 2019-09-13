@@ -7,9 +7,7 @@
 //
 
 #include "FSGuardUserClient.h"
-#include "FSGuardService.h"
 #include "Utils.h"
-#include "WaitList.h"
 
 #define super IOUserClient
 
@@ -226,16 +224,16 @@ IOReturn FSGuardUserClient::clientMemoryForType(UInt32 type, IOOptionBits *optio
     return kIOReturnUnsupported;
 }
 
-void FSGuardUserClient::sendFSGuardRequest(FSGuardRequest &request)
+void FSGuardUserClient::sendFSGuardRequest(FSGuardRequestInternal &request)
 {
     LockGuard lock(m_waitListLock);
 
-    m_requestWaitList->add(request.rid);
+    m_requestWaitList->add(request.request.rid);
 
     //
     // NOTE: infinite loop until queue have free slot for message
     //
-    while (!m_dataQueue->enqueue(&request, sizeof(FSGuardRequest)))
+    while (!m_dataQueue->enqueue(&request.request, sizeof(FSGuardRequest)))
     {
         IOSleep(1);
     }
@@ -244,10 +242,30 @@ void FSGuardUserClient::sendFSGuardRequest(FSGuardRequest &request)
 
     while (THREAD_RESTART == waitResult)
     {
-        waitResult = m_requestWaitList->wait(request.rid, THREAD_ABORTSAFE, m_waitListLock, GetDefaultTimeout());
+        waitResult = m_requestWaitList->wait(request.request.rid, THREAD_ABORTSAFE, m_waitListLock, GetDefaultTimeout());
     }
 
     return;
+}
+
+IOReturn FSGuardUserClient::extPostFSGuardResponse(__unused void *reference, IOExternalMethodArguments *arguments)
+{
+    LockGuard lock(m_waitListLock);
+
+    const FSGuardResponse *response = static_cast<const FSGuardResponse *>(arguments->structureInput);
+
+    if (!m_requestWaitList->contains(response->rid))
+    {
+        return kIOReturnBadArgument;
+    }
+
+    FSGuardRequestInternal *request = reinterpret_cast<FSGuardRequestInternal *>(response->rid);
+    request->allow = response->allow;
+
+    m_requestWaitList->remove(response->rid);
+    m_requestWaitList->signal(response->rid, m_waitListLock);
+
+    return kIOReturnSuccess;
 }
 
 void FSGuardUserClient::free()
@@ -279,19 +297,3 @@ void FSGuardUserClient::free()
     super::free();
 }
 
-IOReturn FSGuardUserClient::extPostFSGuardResponse(__unused void *reference, IOExternalMethodArguments *arguments)
-{
-    LockGuard lock(m_waitListLock);
-
-    const FSGuardResponse *response = static_cast<const FSGuardResponse *>(arguments->structureInput);
-
-    if (!m_requestWaitList->contains(response->rid))
-    {
-        return kIOReturnBadArgument;
-    }
-
-    m_requestWaitList->remove(response->rid);
-    m_requestWaitList->signal(response->rid, m_waitListLock);
-
-    return kIOReturnSuccess;
-}

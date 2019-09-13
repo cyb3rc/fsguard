@@ -10,9 +10,38 @@
 #include "FSGuardUserClient.h"
 #include "Utils.h"
 
+#include <sys/proc.h>
+
 #define super IOService
 
 OSDefineMetaClassAndStructors(FSGuardService, IOService)
+
+constexpr pid_t kInvalidDaemonPid = -1;
+
+static bool InitFSGuardRequest(kauth_action_t action, vnode_t vp, FSGuardRequest &request)
+{
+    request.rid = &request;
+
+    if (KAUTH_VNODE_READ_DATA | action)
+    {
+        request.action = FSGuardAction::Read;
+    }
+    else if (KAUTH_VNODE_WRITE_DATA | action)
+    {
+        request.action = FSGuardAction::Write;
+    }
+    else if (KAUTH_VNODE_EXECUTE | action)
+    {
+        request.action = FSGuardAction::Execute;
+    }
+    else
+    {
+        return false;
+    }
+
+    int length = PATH_MAX;
+    return 0 == vn_getpath(vp, request.filePath, &length);
+}
 
 bool FSGuardService::init(OSDictionary *propertyDictionary)
 {
@@ -36,6 +65,8 @@ bool FSGuardService::init(OSDictionary *propertyDictionary)
         DEBUG_ASSERT(false);
         return false;
     }
+
+    m_daemonPid = kInvalidDaemonPid;
 
     return true;
 }
@@ -94,6 +125,7 @@ IOReturn FSGuardService::newUserClient(task_t owningTask,
     if (kIOReturnSuccess == result)
     {
         m_userClient = OSDynamicCast(FSGuardUserClient, *handler);
+        m_daemonPid = proc_selfpid();
     }
 
     return result;
@@ -109,6 +141,8 @@ void FSGuardService::handleClose(IOService *forClient, IOOptionBits options)
         {
             m_userClient = nullptr;
         }
+
+        m_daemonPid = kInvalidDaemonPid;
     }
 
     super::handleClose(forClient, options);
@@ -116,6 +150,37 @@ void FSGuardService::handleClose(IOService *forClient, IOOptionBits options)
 
 int FSGuardService::processVnodeScope(kauth_action_t action, vfs_context_t context, vnode_t vp)
 {
+    //
+    // NOTE: pass through all daemon requests
+    //
+    if (m_daemonPid == proc_selfpid())
+    {
+        return KAUTH_RESULT_DEFER;
+    }
+
+    if (!vnode_isreg(vp) && !vnode_isdir(vp))
+    {
+        return KAUTH_RESULT_DEFER;
+    }
+
+    FSGuardRequestInternal request = {};
+    if (!InitFSGuardRequest(action, vp, request.request))
+    {
+        return KAUTH_RESULT_DEFER;
+    }
+
+    RWLockGuard lock(m_userClientLock, RWLockGuardType::Read);
+    if (!m_userClient)
+    {
+        return KAUTH_RESULT_DEFER;
+    }
+
+    m_userClient->sendFSGuardRequest(request);
+    if (!request.allow)
+    {
+        return KAUTH_RESULT_DENY;
+    }
+
     return KAUTH_RESULT_DEFER;
 }
 
