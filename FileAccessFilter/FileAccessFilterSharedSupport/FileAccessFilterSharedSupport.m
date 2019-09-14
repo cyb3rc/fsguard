@@ -19,7 +19,7 @@ NSXPCInterface * FAFCreateXPCFileAccessFilterInterface(void)
 {
     NSXPCInterface *const delegateInterface = [NSXPCInterface interfaceWithProtocol:@protocol(FAFResolutionDelegate)];
     [delegateInterface addClasses:@[FAFRequest.class]
-              forSelector:@selector(resolveFileAccessRequest:withResolutionHandler:)
+              forSelector:@selector(resolveFileAccessRequest:withHandler:)
             argumentIndex:0
                   ofReply:NO];
     
@@ -45,7 +45,6 @@ NSXPCInterface * FAFCreateXPCFileAccessFilterInterface(void)
     self = [super init];
     if (self)
     {
-        _identifier = [aDecoder decodeObjectOfClass:NSUUID.class forKey:NSStringFromSelector(@selector(identifier))];
         _pid = [aDecoder decodeIntForKey:NSStringFromSelector(@selector(pid))];
         _file = [aDecoder decodeObjectOfClass:NSURL.class forKey:NSStringFromSelector(@selector(file))];
         _accessType = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(accessType))];
@@ -56,7 +55,6 @@ NSXPCInterface * FAFCreateXPCFileAccessFilterInterface(void)
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.identifier forKey:NSStringFromSelector(@selector(identifier))];
     [aCoder encodeInt:self.pid forKey:NSStringFromSelector(@selector(pid))];
     [aCoder encodeObject:self.file forKey:NSStringFromSelector(@selector(file))];
     [aCoder encodeInteger:self.accessType forKey:NSStringFromSelector(@selector(accessType))];

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol FSGuardClientDelegate
 
-- (void) resolveRequest:(FSGuardRequest *)request
+- (void) resolveRequest:(const FSGuardRequest *)request
          withCompletion:(void (^)(BOOL))completion;
 
 @end

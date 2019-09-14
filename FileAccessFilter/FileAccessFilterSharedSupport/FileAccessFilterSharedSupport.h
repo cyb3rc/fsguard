@@ -19,22 +19,14 @@ typedef NS_ENUM(NSUInteger, FAFAccessType) {
 };
 
 @interface FAFRequest : NSObject<NSSecureCoding>
-@property (nonatomic) NSUUID *identifier;
 @property (nonatomic) pid_t pid;
 @property (nonatomic) NSURL *file;
 @property (nonatomic) FAFAccessType accessType;
 @end
 
 
-typedef NS_ENUM(NSUInteger, FAFResolutionType) {
-    FAFResolutionTypeReadwrite,
-    FAFResolutionTypeReadonly,
-    FAFResolutionTypeNoaccess
-};
-typedef void(^FAFResolutionHandler)(const FAFResolutionType resolution);
-
 @protocol FAFResolutionDelegate
-- (void)resolveFileAccessRequest:(FAFRequest *const)request withResolutionHandler:(FAFResolutionHandler)handler;
+- (void)resolveFileAccessRequest:(FAFRequest *const)request withHandler:(void(^)(const BOOL allow))handler;
 @end
 
 

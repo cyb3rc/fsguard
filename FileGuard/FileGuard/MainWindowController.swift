@@ -67,14 +67,18 @@ extension MainWindowController {
     }
     
     private func disconnectWithError(_ text: String) {
-        showError(text)
-        updateEnabledState(false)
+        DispatchQueue.main.async {
+            self.showError(text)
+            self.updateEnabledState(false)
+        }
     }
     
     private func showError(_ text: String) {
-        let alert = NSAlert()
-        alert.messageText = text
-        alert.beginSheetModal(for: window!, completionHandler: nil)
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = text
+            alert.beginSheetModal(for: self.window!, completionHandler: nil)
+        }
     }
 }
 

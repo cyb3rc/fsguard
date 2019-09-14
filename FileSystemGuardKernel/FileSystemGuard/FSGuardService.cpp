@@ -26,11 +26,11 @@ static bool InitFSGuardRequest(kauth_action_t action, vnode_t vp, FSGuardRequest
     {
         request.action = FSGuardAction::Read;
     }
-    else if (KAUTH_VNODE_WRITE_DATA | action)
+    else if (KAUTH_VNODE_WRITE_DATA & action)
     {
         request.action = FSGuardAction::Write;
     }
-    else if (KAUTH_VNODE_EXECUTE | action)
+    else if (KAUTH_VNODE_EXECUTE & action)
     {
         request.action = FSGuardAction::Execute;
     }
@@ -174,7 +174,7 @@ int FSGuardService::processVnodeScope(kauth_action_t action, vfs_context_t conte
         return KAUTH_RESULT_DEFER;
     }
 
-    FSGuardRequestInternal request = {};
+    FSGuardRequestInternal request {};
     if (!InitFSGuardRequest(action, vp, request.request))
     {
         return KAUTH_RESULT_DEFER;

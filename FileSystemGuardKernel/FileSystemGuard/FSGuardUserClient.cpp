@@ -239,13 +239,15 @@ void FSGuardUserClient::sendFSGuardRequest(FSGuardRequestInternal &request)
     }
 
     int waitResult = THREAD_RESTART;
-
     while (THREAD_RESTART == waitResult)
     {
         waitResult = m_requestWaitList->wait(request.request.rid, THREAD_ABORTSAFE, m_waitListLock, GetDefaultTimeout());
     }
 
-    return;
+    if (THREAD_AWAKENED != waitResult)
+    {
+        m_requestWaitList->remove(&request);
+    }
 }
 
 IOReturn FSGuardUserClient::extPostFSGuardResponse(__unused void *reference, IOExternalMethodArguments *arguments)

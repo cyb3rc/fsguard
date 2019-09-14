@@ -14,7 +14,7 @@
 
 @implementation FSGuardHandler
 
-- (void) resolveRequest:(FSGuardRequest *)request
+- (void) resolveRequest:(const FSGuardRequest *)request
          withCompletion:(void (^)(BOOL))completion
 {
     NSLog(@"%s", request->filePath);

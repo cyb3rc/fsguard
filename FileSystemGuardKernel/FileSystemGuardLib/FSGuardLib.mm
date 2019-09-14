@@ -25,11 +25,6 @@
 @property (nonatomic) BOOL               dataQueueLoopStop;
 @property (nonatomic) NSThread          *dataQueueLoopThread;
 
-- (BOOL)openDriverConnection;
-- (BOOL)createDataQueuePort;
-- (void)startDataQueueLoop;
-- (void)sendFSGuardResponse:(BOOL)allow forRequset:(const FSGuardRequest *)request;
-
 @end
 
 @implementation FSGuardClient
@@ -151,19 +146,33 @@
             uint32_t size = sizeof(FSGuardRequest);
 
             IOReturn ioret = IODataQueueDequeue(self.queueMappedMemory, &request, &size);
-            if (kIOReturnSuccess == ioret)
+            if (kIOReturnSuccess != ioret)
             {
-                if (self.delegate)
+                NSLog(@"Invalid dequeue");
+                continue;
+            }
+            
+            void* rid = request.rid;
+            if (sizeof(FSGuardRequest) != size)
+            {
+                NSLog(@"Invalid request size");
+                [self sendFSGuardResponse:YES forRequset:rid];
+                continue;
+            }
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                id<FSGuardClientDelegate> const delegate = self.delegate;
+                if (delegate)
                 {
-                    [self.delegate resolveRequest:&request withCompletion:^(BOOL allow) {
-                        [self sendFSGuardResponse:allow forRequset:&request];
+                    [delegate resolveRequest:&request withCompletion:^(BOOL allow) {
+                        [self sendFSGuardResponse:allow forRequset:rid];
                     }];
                 }
                 else
                 {
-                    [self sendFSGuardResponse:YES forRequset:&request];
+                    [self sendFSGuardResponse:YES forRequset:rid];
                 }
-            }
+            });
         }
     } while (!self.dataQueueLoopStop && (kIOReturnSuccess == IODataQueueWaitForAvailableData(self.queueMappedMemory, self.dataQueuePort)));
 
@@ -186,10 +195,10 @@
     }
 }
 
-- (void)sendFSGuardResponse:(BOOL)allow forRequset:(const FSGuardRequest *)request
+- (void)sendFSGuardResponse:(BOOL)allow forRequset:(void *)rid
 {
     FSGuardResponse response;
-    response.rid = request->rid;
+    response.rid = rid;
     response.allow = allow;
 
     kern_return_t kr = IOConnectCallStructMethod(self.connection,

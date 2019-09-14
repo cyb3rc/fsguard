@@ -28,8 +28,55 @@
         return;
     }
     
-    const OSReturn result = KextManagerLoadKextWithURL((__bridge CFURLRef)kext, (__bridge CFArrayRef)(@[]));
+    NSURL *const copiedKEXT = [self copyKEXT:kext];
+    if (!copiedKEXT)
+    {
+        handler(kIOReturnError);
+        return;
+    }
+    
+    const OSReturn result = KextManagerLoadKextWithURL((__bridge CFURLRef)copiedKEXT, (__bridge CFArrayRef)(@[]));
     handler(result);
+}
+
+- (nullable NSURL *)copyKEXT:(NSURL *const)kext
+{
+    NSFileManager *const fileManager = NSFileManager.defaultManager;
+    
+    NSURL *const tmpDirectory = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+    NSURL *const tmpKEXTLocation = [[tmpDirectory URLByAppendingPathComponent:NSBundle.mainBundle.bundleIdentifier] URLByAppendingPathComponent:kext.lastPathComponent];
+    
+    if (![fileManager createDirectoryAtURL:tmpKEXTLocation.URLByDeletingLastPathComponent withIntermediateDirectories:YES attributes:nil error:NULL])
+    {
+        return nil;
+    }
+    
+    if ([fileManager fileExistsAtPath:tmpKEXTLocation.path] &&
+        ![fileManager removeItemAtURL:tmpKEXTLocation error:NULL])
+    {
+        return nil;
+    }
+    
+    if (![fileManager copyItemAtURL:kext toURL:tmpKEXTLocation error:NULL])
+    {
+        return nil;
+    }
+    
+    [self setupPermissionsRecursive:tmpKEXTLocation];
+    
+    return tmpKEXTLocation;
+}
+
+- (void)setupPermissionsRecursive:(NSURL *const)location
+{
+    NSFileManager *const fileManager = NSFileManager.defaultManager;
+    NSDirectoryEnumerator<NSString *> *const enumerator = [fileManager enumeratorAtPath:location.path];
+    while (NSString *const file = [enumerator nextObject])
+    {
+        chown([location URLByAppendingPathComponent:file].fileSystemRepresentation, 0, 0);
+    }
+    
+    chown(location.fileSystemRepresentation, 0, 0);
 }
 
 - (void)registerResolutionDelegate:(id<FAFResolutionDelegate> const _Nullable)delegate completion:(void (^)(const BOOL))handler
@@ -39,7 +86,7 @@
     {
         self.fsGuard = [[FSGuardClient alloc] init];
         self.fsGuard.delegate = self;
-        
+
         __weak typeof(self) weakSelf = self;
         [NSThread detachNewThreadWithBlock:^{
             [weakSelf.fsGuard start];
@@ -54,7 +101,7 @@
     handler(YES);
 }
 
-- (void)resolveRequest:(FSGuardRequest *)request withCompletion:(void (^)(BOOL))completion
+- (void)resolveRequest:(const FSGuardRequest *)request withCompletion:(void (^)(BOOL))completion
 {
     id<FAFResolutionDelegate> const delegate = self.delegate;
     if (!delegate)
@@ -68,8 +115,8 @@
     faRequest.pid = request->pid;
     faRequest.accessType = (FAFAccessType)request->action;
     
-    [delegate resolveFileAccessRequest:faRequest withResolutionHandler:^(const FAFResolutionType resolution) {
-        completion(YES);
+    [delegate resolveFileAccessRequest:faRequest withHandler:^(const BOOL allow) {
+        completion(allow);
     }];
 }
 

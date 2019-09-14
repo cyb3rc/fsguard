@@ -21,7 +21,7 @@ class FSGuardUserClient;
 struct FSGuardRequestInternal
 {
     FSGuardRequest request;
-    bool allow;
+    bool allow = true;
 };
 
 class FSGuardService : public IOService

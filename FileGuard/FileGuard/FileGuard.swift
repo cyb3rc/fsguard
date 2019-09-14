@@ -8,10 +8,16 @@
 
 import Foundation
 
+enum Policy {
+    case readwrite
+    case readonly
+    case noaccess
+}
+
 @objcMembers
 class AccessRule: NSObject {
     var path: String = ""
-    var policy: FAFResolutionType = .readwrite
+    var policy: Policy = .readwrite
 }
 
 protocol IFileGuardStateObserver: class {
@@ -54,7 +60,7 @@ class FileGuard {
     func stop() {
         fileAccessFilter.register(nil) { (success) in
             if success {
-                self.observer?.fileGuardDidStart()
+                self.observer?.fileGuardDidStop()
             } else {
                 self.observer?.fileGuardDidHandleCriticalError("Failed to stop monitoring.")
             }
@@ -63,11 +69,18 @@ class FileGuard {
 }
 
 extension FileGuard: FAFResolutionDelegate {
-    func resolveFileAccessRequest(_ request: FAFRequest, withResolutionHandler handler: @escaping FAFResolutionHandler) {
-        let rule = findRule(for: request)
-        
+    func resolveFileAccessRequest(_ request: FAFRequest, withHandler handler: @escaping (Bool) -> Void) {
         DispatchQueue.global().async {
-            handler(rule?.policy ?? .readwrite)
+            let rule = self.findRule(for: request)
+            
+            switch rule?.policy {
+            case .noaccess?:
+                handler(false)
+            case .readonly?:
+                handler(request.accessType != .write)
+            case .readwrite?, .none:
+                handler(true)
+            }
         }
     }
     
